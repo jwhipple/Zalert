@@ -13,11 +13,11 @@ from collections.abc import Sequence
 
 
 # Are we using test or prod Connectwise?
-# configEnv = 'TestEnv'
-configEnv = 'ProdEnv'
+configEnv = 'TestEnv'
+# configEnv = 'ProdEnv'
 
 # Test event ID to use (valid only if TestEnv is set).
-zabbixTestEventId = '82176448'
+zabbixTestEventId = '83217509'
 
 # Classes
 class Config(dict):

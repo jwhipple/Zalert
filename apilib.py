@@ -434,7 +434,6 @@ class JWZabbix:
 
         response = requests.post(self.zURL, headers={'Content-Type': 'application/json-rpc'}, data=json.dumps(payload))
         result = response.json()
-
         return result
 
 
