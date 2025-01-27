@@ -16,6 +16,8 @@ Provides comprehensive functionality to interact with ConnectWise for operations
 - Built-in support for **board and status searches**, ensuring precise control over service boards.
 
 ### **Zabbix API Integration**
+Tested with Zabbix 6.4
+
 Enables efficient management of Zabbix configurations and workflows:
 - Retrieve detailed event/problem data driven by `event_id`.
 - Add custom acknowledgment messages to Zabbix problems.
