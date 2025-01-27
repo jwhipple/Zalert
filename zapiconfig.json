@@ -1,0 +1,37 @@
+{
+  "TestEnv": {
+    "cwBaseurl": "https://connect-test.companyname.com/v4_6_release/apis/3.0",
+    "cwCompany": "companytest",
+    "cwClientid": "11111111-aaaa-1aaa-1111-111111111111",
+    "cwKey": "abababababababab",
+    "cwSecret": "abababababababaa",
+    "zDebug": 1,
+    "zabbixTicketGenAckMsg": "CW-Test ticket created: {id} (ignore-testing)",
+    "zabbixTicketCloseAckMsg": "CW-Test ticket closed: {id} (ignore-testing)"
+  },
+  "ProdEnv": {
+    "cwBaseurl": "https://connect.companyname.com/v4_6_release/apis/3.0",
+    "cwCompany": "company",
+    "cwClientid": "11111111-aaaa-1aaa-1111-111111111111",
+    "cwKey": "abababababababab",
+    "cwSecret": "abababababababaa",
+    "zDebug": 0,
+    "zabbixTicketGenAckMsg": "Connectwise ticket created: {id}",
+    "zabbixTicketCloseAckMsg": "Connectwise ticket closed: {id}"
+  },
+  "Global": {
+    "zURL": "https://zabbix.company.com/api_jsonrpc.php",
+    "zAPIKey": "abababbabababababababab2323231ababababababababa23232324ababababa",
+    "companyDefaultValue": "Catchall",
+    "companyTagName": "CompanyShortName",
+    "cwBoardTagName": "CWBoard",
+    "cwDisableTickets": "NoTickets",
+    "companyNameFromHostGroups": "['M/','A/']",
+    "defaultCWBoard": "Tier 1 Support",
+    "zTicketErrorCWBoard": "CW Board for Zabbix API Errors",
+    "zTicketErrorCompany": "CWCompanyName",
+    "scriptErrorAlertSMS":[
+      "5558675309"
+    ]
+  }
+}
