@@ -56,7 +56,7 @@ def toCWDateTime(pythonDateTime):
     return pythonDateTime.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
-def getCompanyForTicket(zabbixEventRecord, companyTagName):
+def getCompanyForTicket(zabbixEventRecord, companyTagName, companyNameFromHostGroups):
     # Procedure to get company short name. This involves several API's so its placed here.
     # Determine company name to put in ticket:
     # Try to get company name from the host tags first.
@@ -72,10 +72,13 @@ def getCompanyForTicket(zabbixEventRecord, companyTagName):
         # cwapi.writeDebugLog(f'Trying to find company from hostgroups with companyNameFromHostGroups ... in host group name')
         hostgroups = jwzabbixapi.getGroupsForHost(zabbixEventRecord[0]['hosts'][0]['hostid'])['result'][0]['groups']
 
-        # Loop through all the hostgroups for a company. Find any that start with M/ or A/
-        # and use that as company shortname.
+        # Parse the string into a Python list
+        companyNamePrefixes = json.loads(
+            companyNameFromHostGroups.replace("'", '"'))  # Handle single quotes for JSON format
+
         for group in hostgroups:
-            if group['name'].startswith('A/') or group['name'].startswith('M/'):
+            # Check if 'group["name"]' starts with any prefix in companyNamePrefixes
+            if any(group['name'].startswith(prefix) for prefix in companyNamePrefixes):
                 groupmatch = group['name'].split('/')
                 if len(groupmatch) > 1:
                     cwapi.writeDebugLog(f'Got company from hostgroup: {group["name"]}')
@@ -281,7 +284,7 @@ zabbixCWBoardId = cwapi.getServiceTicketBoardIdFromName(zabbixCWBoard).json()[0]
 
 # Ticket company search area
 # Get company to assign in ticket by looking at tags->hostgroup->default value
-zabbixCWCompany = getCompanyForTicket(zabbixEventRecord, companyTagName)
+zabbixCWCompany = getCompanyForTicket(zabbixEventRecord, companyTagName, companyNameFromHostGroups)
 
 # Company ID lookup from name:
 # Certain values for company short name could be "CatchAll" which are not in MyACI so we search for them in CW to see if we can match.

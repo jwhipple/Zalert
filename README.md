@@ -1,7 +1,9 @@
 # README.md
 # Zabbix - Connectwise Interface in Python
 This python script handles sending Zabbix problems to Connectwise tickets. Currently it will send Error level and above to Connectwise for ticket generation.
+
 ## Features
+
 ### **ConnectWise API Integration**
 Provides comprehensive functionality to interact with ConnectWise for operations such as:
 - Fetching company details based on identifiers (ID or name).
@@ -35,4 +37,7 @@ Enables efficient management of Zabbix configurations and workflows:
 - **External Packages**:
     - `requests`: For handling HTTPS requests and responses.
     - `json`: For structured data transformation and serialization.
-
+  - **Edit config file zapiconfig.json with your API tokens**
+    - `TestEnv` contains the variables for a Connectwise test instance
+    - `ProdEnv` contains variables for your prod instance.
+    - If debug is set, it will log to /tmp/zalert.txt file.
