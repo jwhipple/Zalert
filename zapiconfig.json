@@ -3,7 +3,7 @@
     "cwBaseurl": "https://connect-test.companyname.com/v4_6_release/apis/3.0",
     "cwCompany": "companytest",
     "cwClientid": "11111111-aaaa-1aaa-1111-111111111111",
-    "cwKey": "bababababababab",
+    "cwKey": "abababababababab",
     "cwSecret": "abababababababaa",
     "zDebug": 1,
     "zabbixTicketGenAckMsg": "CW-Test ticket created: {id} (ignore-testing)",
