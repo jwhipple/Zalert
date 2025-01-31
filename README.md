@@ -17,6 +17,8 @@ Provides comprehensive functionality to interact with ConnectWise for operations
 
 ### **Zabbix API Integration**
 Tested with Zabbix 6.4
+![image](https://github.com/user-attachments/assets/0b22e41a-6814-478a-a17d-e1debf14c2d9)
+
 
 Enables efficient management of Zabbix configurations and workflows:
 - Retrieve detailed event/problem data driven by `event_id`.
