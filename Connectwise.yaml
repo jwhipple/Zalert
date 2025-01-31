@@ -1,0 +1,46 @@
+zabbix_export:
+  version: '6.4'
+  media_types:
+    - name: Connectwise
+      type: SCRIPT
+      script_name: zalert.py
+      parameters:
+        - sortorder: '0'
+          value: '{EVENT.ID}'
+      attempt_interval: 60s
+      description: |
+        Create Connectwise ticket on alert
+        By default, tickets will go into Tier 1 board, override with tag.
+        If tag IPP.NoTickets =1 is specified, it will NOT generate a ticket for the host.
+        
+      message_templates:
+        - event_source: TRIGGERS
+          operation_mode: PROBLEM
+          subject: 'Problem: {EVENT.ID}-{EVENT.NAME} '
+          message: |
+            Problem started at {EVENT.TIME} on {EVENT.DATE} UTC
+            Problem name: {EVENT.NAME}
+            Host: {HOST.NAME}
+            Severity: {EVENT.SEVERITY}
+            Operational data: {EVENT.OPDATA}
+            Original problem ID: {EVENT.ID}
+            {TRIGGER.URL}
+        - event_source: TRIGGERS
+          operation_mode: RECOVERY
+          subject: 'Resolved: {EVENT.ID}-{EVENT.NAME} '
+          message: |
+            Problem has been resolved at {EVENT.RECOVERY.TIME} on {EVENT.RECOVERY.DATE} UTC
+            Problem name: {EVENT.NAME}
+            Problem duration: {EVENT.DURATION}
+            Host: {HOST.NAME}
+            Severity: {EVENT.SEVERITY}
+            Original problem ID: {EVENT.ID}
+            {TRIGGER.URL}
+        - event_source: TRIGGERS
+          operation_mode: UPDATE
+          subject: 'Updated: {EVENT.ID}-{EVENT.NAME} '
+          message: |
+            {USER.FULLNAME} {EVENT.UPDATE.ACTION} problem at {EVENT.UPDATE.DATE} {EVENT.UPDATE.TIME} UTC. 
+            {EVENT.UPDATE.MESSAGE}
+            
+            Current problem status is {EVENT.STATUS}, age is {EVENT.AGE}, acknowledged: {EVENT.ACK.STATUS}.
