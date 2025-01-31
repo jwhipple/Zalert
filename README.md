@@ -18,6 +18,7 @@ Provides comprehensive functionality to interact with ConnectWise for operations
 ### **Zabbix API Integration**
 Tested with Zabbix 6.4
 ![image](https://github.com/user-attachments/assets/0b22e41a-6814-478a-a17d-e1debf14c2d9)
+![image](https://github.com/user-attachments/assets/756457a2-8a34-44c6-96ac-49f1280a659e)
 
 
 Enables efficient management of Zabbix configurations and workflows:
